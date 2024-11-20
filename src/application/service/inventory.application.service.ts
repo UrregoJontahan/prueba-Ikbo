@@ -14,7 +14,7 @@ export class InventoryApplicationService  {
         await this.inventroyInterfacePortIn.processOutput(outputDto.productId, outputDto.quantity);
     }
 
-    async getProductState(productId: number): Promise<string> {
+    async getProductState(productId: string): Promise<string> {
         return this.inventroyInterfacePortIn.getProductState(productId);
     }
 }

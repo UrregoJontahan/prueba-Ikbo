@@ -27,7 +27,7 @@ export class ProductRepository implements productInterfacePortOut {
     return MongoProductMapper.toDomain(mongoProduct);
   }
 
-  async getProducts(): Promise<Product[]> {
+  async getProducts(): Promise<Product[]> { 
     const mongoProducts = await this.productModel.find().exec();
     return mongoProducts.map(MongoProductMapper.toDomain);
   }

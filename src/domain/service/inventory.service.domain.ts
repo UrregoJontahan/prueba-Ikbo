@@ -2,19 +2,30 @@ import { Inject, Injectable } from "@nestjs/common";
 import { InventoryEntry } from "../entity/invnetory.entity";
 import { InventoryInterfacePortIn } from "../ports/in/inventory.interface.portIn";
 import { InventoryInterfacePortOut } from "../ports/out/inventory.interface.portOut";
+import { productInterfacePortOut } from "../ports/out/product.interface.portOut";
 import * as moment from "moment";
 
 @Injectable()
 export class InventoryDomainService implements InventoryInterfacePortIn{
-    constructor( @Inject("inventoryInterfacePortOut")private readonly inventoryInterfacePortOut: InventoryInterfacePortOut) {}
+    constructor( 
+        @Inject("inventoryInterfacePortOut")private readonly inventoryInterfacePortOut: InventoryInterfacePortOut,
 
-    async addEntry(productId: number, quantity: number, expiryDate: Date): Promise<void> {
-        
-        const entry = new InventoryEntry(Date.now(), Number(productId), quantity, new Date(expiryDate));
+    ) {}
+
+    async addEntry(productId: string, quantity: number, expiryDate: Date): Promise<void> {
+    
+        const entry = new InventoryEntry(
+          "", 
+          productId,
+          quantity,
+          moment(expiryDate).toDate(),
+        );
+      
         await this.inventoryInterfacePortOut.saveEntry(entry);
     }
 
-    async processOutput(productId: number, quantity: number): Promise<void> {
+
+    async processOutput(productId: string, quantity: number): Promise<void> {
         const entries = await this.inventoryInterfacePortOut.findEntriesByProductId([productId]);
         let remainingQuantity = quantity;
 
@@ -33,7 +44,7 @@ export class InventoryDomainService implements InventoryInterfacePortIn{
         }
     }
 
-    async getProductState(productId: number): Promise<string> {
+    async getProductState(productId: string): Promise<string> {
         const now = moment();
         const entries = await this.inventoryInterfacePortOut.findEntriesByProductId([productId]);
         

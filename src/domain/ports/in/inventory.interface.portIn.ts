@@ -1,5 +1,5 @@
 export interface InventoryInterfacePortIn {
-    addEntry(productId: number, quantity: number, expiryDate: Date): Promise<void>
-    processOutput(productId: number, quantity: number): Promise<void>
-    getProductState(productId: number): Promise<string>
+    addEntry(productId: string, quantity: number, expiryDate: Date): Promise<void>
+    processOutput(productId: string, quantity: number): Promise<void>
+    getProductState(productId: string): Promise<string>
 }

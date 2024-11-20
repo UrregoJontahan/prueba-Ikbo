@@ -9,11 +9,12 @@ import { InventoryDomainService } from './domain/service/inventory.service.domai
 import { ProductRepository } from './infrastructure/repository/product.repository';
 import { InventoryRepository } from './infrastructure/repository/inventory.repository';
 import { MongoProductSchema } from './infrastructure/repository/mongo/entity/products.entity.repository';
+import { InventorySchema } from './infrastructure/repository/mongo/entity/inventory.entity.repositoy';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/Ikbo-db-products'),
-    MongooseModule.forFeature([{ name: 'Product', schema: MongoProductSchema }]),
+    MongooseModule.forFeature([{ name: 'Product', schema: MongoProductSchema },{ name: 'Inventory', schema:InventorySchema }]),
   ],
   controllers: [ProductController, InventoryController],
   providers: [
@@ -21,6 +22,8 @@ import { MongoProductSchema } from './infrastructure/repository/mongo/entity/pro
     InventoryApplicationService,
     { provide: 'productInterfacePortIn', useClass: ProductServicesDomain },
     { provide: 'inventoryInterfacePortIn', useClass: InventoryDomainService },
+    {provide:"productInterfacePortOut", useClass: ProductServicesDomain},
+    {provide:'Inventory', useClass:InventoryRepository},
     {provide:'Product', useClass:ProductRepository},
     { provide: 'productInterfaceRepositoryPortOut', useClass: ProductRepository },
     { provide: 'inventoryInterfacePortOut', useClass: InventoryRepository },

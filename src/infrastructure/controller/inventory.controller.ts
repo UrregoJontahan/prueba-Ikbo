@@ -17,7 +17,7 @@ export class InventoryController {
     }
 
     @Get(':productId/state')
-    async getProductState(@Param('productId') productId: number): Promise<string> {
+    async getProductState(@Param('productId') productId: string): Promise<string> {
         return this.inventoryAppService.getProductState(productId);
     }
 }
