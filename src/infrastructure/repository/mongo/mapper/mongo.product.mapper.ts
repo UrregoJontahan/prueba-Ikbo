@@ -1,4 +1,4 @@
-import { Product } from 'src/domain/entity/product.entity';
+import { Product } from '../../../../domain/entity/product.entity';
 import { MongoProduct } from '../entity/products.entity.repository';
 
 export class MongoProductMapper {

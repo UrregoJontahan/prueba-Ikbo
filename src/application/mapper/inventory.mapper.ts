@@ -1,4 +1,4 @@
-import { InventoryEntry } from 'src/domain/entity/invnetory.entity';
+import { InventoryEntry } from '../../domain/entity/invnetory.entity';
 import { InventoryEntryDto } from '../dto/inventory.dto';
 
 export class InventoryMapper {

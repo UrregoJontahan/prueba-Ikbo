@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose'; 
-import { Product } from 'src/domain/entity/product.entity';
-import { productInterfacePortOut } from 'src/domain/ports/out/product.interface.portOut';
+import { Product } from '../../domain/entity/product.entity';
+import { productInterfacePortOut } from '../../domain/ports/out/product.interface.portOut';
 import { MongoProductMapper } from './mongo/mapper/mongo.product.mapper';
 import { MongoProduct } from './mongo/entity/products.entity.repository'; // Importamos el tipo MongoProductDocument
 
@@ -34,7 +34,7 @@ export class ProductRepository implements productInterfacePortOut {
 
   async updateProduct(id: string, product: Product): Promise<Product> {
     const mongoEntity = MongoProductMapper.toMongoEntity(product);
-    const updatedMongoProduct = await this.productModel.findByIdAndUpdate(id, mongoEntity, { new: true }).exec();
+    const updatedMongoProduct = await this.productModel.findByIdAndUpdate(id, mongoEntity, { new: false }).exec();
     
     if (!updatedMongoProduct) throw new Error('Producto no encontrado');
     

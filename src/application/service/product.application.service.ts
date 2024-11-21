@@ -1,8 +1,7 @@
-import { ProductInterfacePortIn } from "src/domain/ports/in/product.interface.portIn";
 import { ProductDto } from "../dto/product.dto";
 import { ProductMapper } from "../mapper/product.mapper";
 import { Injectable, Inject } from "@nestjs/common";
-import { productInterfacePortOut } from "src/domain/ports/out/product.interface.portOut";
+import { productInterfacePortOut } from "../../domain/ports/out/product.interface.portOut";
 
 @Injectable()
 export class ProductApplicationService {

@@ -1,4 +1,4 @@
-import { Product } from "src/domain/entity/product.entity";
+import { Product } from "../../../domain/entity/product.entity";
 
 export interface productInterfacePortOut{
     saveProduct(product: Product): Promise<Product>;

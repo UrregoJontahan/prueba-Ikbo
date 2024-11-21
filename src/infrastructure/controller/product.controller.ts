@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
-import { ProductDto } from "src/application/dto/product.dto";
-import { ProductApplicationService } from "src/application/service/product.application.service";
+import { ProductDto } from "../../application/dto/product.dto";
+import { ProductApplicationService } from "../../application/service/product.application.service";
 
 @Controller("products")
 export class ProductController {

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { InventoryEntryDto } from "../dto/inventory.dto";
-import { InventoryInterfacePortIn } from "src/domain/ports/in/inventory.interface.portIn";
+import { InventoryInterfacePortIn } from "../../domain/ports/in/inventory.interface.portIn";
 
 @Injectable()
 export class InventoryApplicationService  {

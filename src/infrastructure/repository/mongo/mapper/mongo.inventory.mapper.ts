@@ -1,5 +1,5 @@
-import { InventoryEntry } from "src/domain/entity/invnetory.entity";
-import { InventoryEntryDto } from "src/application/dto/inventory.dto";
+import { InventoryEntry } from "../../../../domain/entity/invnetory.entity";
+import { InventoryEntryDto } from "../../../../application/dto/inventory.dto";
 
 export class MongoInventoryMapper {
   
