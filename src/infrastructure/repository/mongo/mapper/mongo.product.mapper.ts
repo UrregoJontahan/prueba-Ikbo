@@ -14,6 +14,7 @@ export class MongoProductMapper {
 
   static toMongoEntity(product: Product) {
     return {
+      _id: product.getId(),
       name: product.getName(),
       description: product.getDescription(),
       category: product.getCategory(),

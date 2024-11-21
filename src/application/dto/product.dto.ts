@@ -1,6 +1,8 @@
 import { IsString, IsNotEmpty, MinLength } from 'class-validator';
 
 export class ProductDto {
+    @IsString()
+    _id: string
 
     @IsString({ message: 'El nombre debe ser una cadena de texto.' })
     @IsNotEmpty({ message: 'El nombre del producto no puede estar vacío.' })

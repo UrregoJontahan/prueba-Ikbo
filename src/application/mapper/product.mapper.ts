@@ -4,6 +4,7 @@ import { ProductDto } from '../dto/product.dto';
 export class ProductMapper {
   static toDto(product: Product): ProductDto {
     return {
+      _id:product.id,
       name: product.name,
       description: product.description,
       category: product.category,
